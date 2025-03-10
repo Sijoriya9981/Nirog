@@ -14,13 +14,16 @@ const Login = () => {
 
   const navigate = useNavigate()
   const { backendUrl, token, setToken } = useContext(AppContext)
-
+function cleanUrl(url) {
+  // Remove any double slashes, except for the "://"
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
     if (state === 'Sign Up') {
-
-      const { data } = await axios.post(backendUrl + '/api/user/register', { name, email, password })
+const newurl = cleanUrl(backendUrl+'/api/user/register');
+      const { data } = await axios.post(newurl, { name, email, password })
 
       if (data.success) {
         localStorage.setItem('token', data.token)
@@ -30,8 +33,8 @@ const Login = () => {
       }
 
     } else {
-
-      const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+const newurl = cleanUrl(backendUrl+'/api/user/login');
+      const { data } = await axios.post( newurl+ , { email, password })
 
       if (data.success) {
         localStorage.setItem('token', data.token)
