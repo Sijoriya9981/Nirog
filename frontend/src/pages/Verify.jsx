@@ -12,15 +12,18 @@ const Verify = () => {
     const appointmentId = searchParams.get("appointmentId")
 
     const { backendUrl, token } = useContext(AppContext)
-
+function cleanUrl(url) {
+  // Remove any double slashes, except for the "://"
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
     const navigate = useNavigate()
 
     // Function to verify stripe payment
     const verifyStripe = async () => {
 
         try {
-
-            const { data } = await axios.post(backendUrl + "/api/user/verifyStripe", { success, appointmentId }, { headers: { token } })
+               const newurl = cleanUrl(backendUrl + "/api/user/verifyStripe");
+            const { data } = await axios.post(newurl, { success, appointmentId }, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)
