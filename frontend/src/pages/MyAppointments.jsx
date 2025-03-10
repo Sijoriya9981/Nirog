@@ -14,7 +14,10 @@ const MyAppointments = () => {
     const [payment, setPayment] = useState('')
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
+    function cleanUrl(url) {
+  // Remove any double slashes, except for the "://"
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
     // Function to format the date eg. ( 20_01_2000 => 20 Jan 2000 )
     const slotDateFormat = (slotDate) => {
         const dateArray = slotDate.split('_')
@@ -25,7 +28,8 @@ const MyAppointments = () => {
     const getUserAppointments = async () => {
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
+            const newurl = cleanUrl(backendUrl+'/api/user/appointments');
+            const { data } = await axios.get(newurl , { headers: { token } })
             setAppointments(data.appointments.reverse())
 
         } catch (error) {
@@ -38,8 +42,8 @@ const MyAppointments = () => {
     const cancelAppointment = async (appointmentId) => {
 
         try {
-
-            const { data } = await axios.post(backendUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } })
+            const newurl = cleanUrl(backendUrl+'/api/user/cancel-appointment');
+            const { data } = await axios.post(newurl  , { appointmentId }, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)
@@ -69,7 +73,8 @@ const MyAppointments = () => {
                 console.log(response)
 
                 try {
-                    const { data } = await axios.post(backendUrl + "/api/user/verifyRazorpay", response, { headers: { token } });
+                    const newurl = cleanUrl(backendUrl + "/api/user/verifyRazorpay");
+                    const { data } = await axios.post(newurl, response, { headers: { token } });
                     if (data.success) {
                         navigate('/my-appointments')
                         getUserAppointments()
@@ -87,7 +92,8 @@ const MyAppointments = () => {
     // Function to make payment using razorpay
     const appointmentRazorpay = async (appointmentId) => {
         try {
-            const { data } = await axios.post(backendUrl + '/api/user/payment-razorpay', { appointmentId }, { headers: { token } })
+              const newurl = cleanUrl(backendUrl + '/api/user/payment-razorpay');
+            const { data } = await axios.post(newurl, { appointmentId }, { headers: { token } })
             if (data.success) {
                 initPay(data.order)
             } else {
@@ -102,7 +108,8 @@ const MyAppointments = () => {
     // Function to make payment using stripe
     const appointmentStripe = async (appointmentId) => {
         try {
-            const { data } = await axios.post(backendUrl + '/api/user/payment-stripe', { appointmentId }, { headers: { token } })
+             const newurl = cleanUrl(backendUrl + '/api/user/payment-stripe');
+            const { data } = await axios.post(newurl, { appointmentId }, { headers: { token } })
             if (data.success) {
                 const { session_url } = data
                 window.location.replace(session_url)
