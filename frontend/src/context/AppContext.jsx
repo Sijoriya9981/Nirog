@@ -12,13 +12,16 @@ const AppContextProvider = (props) => {
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
     const [userData, setUserData] = useState(false)
-
+function cleanUrl(url) {
+  // Remove any double slashes, except for the "://"
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
     // Getting Doctors using API
     const getDoctosData = async () => {
 
         try {
-
-            const { data } = await axios.get(backendUrl + '/api/doctor/list')
+const cleanedUrl = cleanUrl(backendUrl + '/api/doctor/list');
+            const { data } = await axios.get(cleanedUrl)
             if (data.success) {
                 setDoctors(data.doctors)
             } else {
