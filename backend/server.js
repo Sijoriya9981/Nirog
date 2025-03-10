@@ -16,7 +16,7 @@ connectCloudinary()
 // middlewares
 app.use(express.json())
 
-const allowedOrigins = ['https://nirogfrontend.vercel.app/']; // Replace with your actual Vercel app URL
+const allowedOrigins = ['https://nirogfrontend.vercel.app']; // Replace with your actual Vercel app URL
 
 const corsOptions = {
   origin: function (origin, callback) {
