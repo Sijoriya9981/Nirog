@@ -39,8 +39,8 @@ const cleanedUrl = cleanUrl(backendUrl + '/api/doctor/list');
     const loadUserProfileData = async () => {
 
         try {
-
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
+const cleanedUrl = cleanUrl(backendUrl + '/api/user/get-profile');
+            const { data } = await axios.get(cleanedUrl, { headers: { token } })
 
             if (data.success) {
                 setUserData(data.userData)
