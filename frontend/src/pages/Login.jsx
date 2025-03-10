@@ -22,7 +22,7 @@ function cleanUrl(url) {
     event.preventDefault();
 
     if (state === 'Sign Up') {
-const newurl = cleanUrl(backendUrl+'/api/user/register');
+       const newurl = cleanUrl(backendUrl+'/api/user/register');
       const { data } = await axios.post(newurl, { name, email, password })
 
       if (data.success) {
@@ -33,7 +33,7 @@ const newurl = cleanUrl(backendUrl+'/api/user/register');
       }
 
     } else {
-const newurl = cleanUrl(backendUrl+'/api/user/login');
+      const newurl = cleanUrl(backendUrl+'/api/user/login');
       const { data } = await axios.post( newurl+ , { email, password })
 
       if (data.success) {
