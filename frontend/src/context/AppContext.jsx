@@ -21,7 +21,7 @@ function cleanUrl(url) {
 
         try {
 // const cleanedUrl = cleanUrl(backendUrl  +'/api/doctor/list');
-            const { data } = await axios.get('https://nirogbackend.vercel.app/api/doctor/list)
+            const { data } = await axios.get('https://nirogbackend.vercel.app/api/doctor/list')
             if (data.success) {
                 setDoctors(data.doctors)
             } else {
