@@ -23,7 +23,10 @@ const Appointment = () => {
         const docInfo = doctors.find((doc) => doc._id === docId)
         setDocInfo(docInfo)
     }
-
+function cleanUrl(url) {
+  // Remove any double slashes, except for the "://"
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
     const getAvailableSolts = async () => {
 
         setDocSlots([])
@@ -101,8 +104,8 @@ const Appointment = () => {
         const slotDate = day + "_" + month + "_" + year
 
         try {
-
-            const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } })
+             const newurl = cleanUrl(backendUrl+'/api/user/book-appointment');
+            const { data } = await axios.post(newurl, { docId, slotDate, slotTime }, { headers: { token } })
             if (data.success) {
                 toast.success(data.message)
                 getDoctosData()
