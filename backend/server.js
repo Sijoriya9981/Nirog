@@ -32,7 +32,7 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions))
-app.use(cors())
+//app.use(cors())
 
 // api endpoints
 app.use("/api/user", userRouter)
