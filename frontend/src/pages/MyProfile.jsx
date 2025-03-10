@@ -11,7 +11,9 @@ const MyProfile = () => {
     const [image, setImage] = useState(false)
 
     const { token, backendUrl, userData, setUserData, loadUserProfileData } = useContext(AppContext)
-function cleanUrl(url) {
+
+    //fucntion for removing double //
+    function cleanUrl(url) {
   // Remove any double slashes, except for the "://"
   return url.replace(/([^:]\/)\/+/g, "$1");
 }
