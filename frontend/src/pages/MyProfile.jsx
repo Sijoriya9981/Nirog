@@ -12,11 +12,6 @@ const MyProfile = () => {
 
     const { token, backendUrl, userData, setUserData, loadUserProfileData } = useContext(AppContext)
 
-    //fucntion for removing double //
-    function cleanUrl(url) {
-  // Remove any double slashes, except for the "://"
-  return url.replace(/([^:]\/)\/+/g, "$1");
-}
     // Function to update user profile data using API
     const updateUserProfileData = async () => {
 
@@ -31,9 +26,8 @@ const MyProfile = () => {
             formData.append('dob', userData.dob)
 
             image && formData.append('image', image)
-            
-           const newurl = cleanUrl(backendUrl + '/api/user/update-profile');
-            const { data } = await axios.post(newurl, formData, { headers: { token } })
+
+            const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)

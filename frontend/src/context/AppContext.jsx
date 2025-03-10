@@ -12,16 +12,13 @@ const AppContextProvider = (props) => {
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
     const [userData, setUserData] = useState(false)
-function cleanUrl(url) {
-  // Remove any double slashes, except for the "://"
-  return url.replace(/([^:]\/)\/+/g, "$1");
-}
+
     // Getting Doctors using API
     const getDoctosData = async () => {
 
         try {
-// const cleanedUrl = cleanUrl(backendUrl  +'/api/doctor/list');
-            const { data } = await axios.get('https://nirogbackend.vercel.app/api/doctor/list')
+
+            const { data } = await axios.get(backendUrl + '/api/doctor/list')
             if (data.success) {
                 setDoctors(data.doctors)
             } else {
@@ -39,8 +36,8 @@ function cleanUrl(url) {
     const loadUserProfileData = async () => {
 
         try {
-// const  newurl = cleanUrl(backendUrl + '/api/user/get-profile');
-            const { data } = await axios.get('https://nirogbackend.vercel.app/api/user/get-profile', { headers: { token } })
+
+            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
 
             if (data.success) {
                 setUserData(data.userData)
