@@ -23,7 +23,7 @@ const MyAppointments = () => {
         const dateArray = slotDate.split('_')
         return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
     }
-
+ / ////
     // Getting User Appointments Data Using API
     const getUserAppointments = async () => {
         try {
