@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 const Verify = () => {
 
+    
     const [searchParams, setSearchParams] = useSearchParams()
 
     const success = searchParams.get("success")
