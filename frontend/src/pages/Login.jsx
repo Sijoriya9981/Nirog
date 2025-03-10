@@ -34,7 +34,7 @@ function cleanUrl(url) {
 
     } else {
       const newurl = cleanUrl(backendUrl+'/api/user/login');
-      const { data } = await axios.post( newurl+ , { email, password })
+      const { data } = await axios.post( newurl , { email, password })
 
       if (data.success) {
         localStorage.setItem('token', data.token)
