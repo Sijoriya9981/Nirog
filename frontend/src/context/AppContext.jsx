@@ -20,7 +20,7 @@ function cleanUrl(url) {
     const getDoctosData = async () => {
 
         try {
-const cleanedUrl = cleanUrl(backendUrl  '/api/doctor/list');
+// const cleanedUrl = cleanUrl(backendUrl  +'/api/doctor/list');
             const { data } = await axios.get('https://nirogbackend.vercel.app/api/doctor/list)
             if (data.success) {
                 setDoctors(data.doctors)
@@ -39,7 +39,7 @@ const cleanedUrl = cleanUrl(backendUrl  '/api/doctor/list');
     const loadUserProfileData = async () => {
 
         try {
-const  newurl = cleanUrl(backendUrl + '/api/user/get-profile');
+// const  newurl = cleanUrl(backendUrl + '/api/user/get-profile');
             const { data } = await axios.get('https://nirogbackend.vercel.app/api/user/get-profile', { headers: { token } })
 
             if (data.success) {
