@@ -40,7 +40,7 @@ const cleanedUrl = cleanUrl(backendUrl + '/api/doctor/list');
 
         try {
 const  newurl = cleanUrl(backendUrl + '/api/user/get-profile');
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
+            const { data } = await axios.get(newurl, { headers: { token } })
 
             if (data.success) {
                 setUserData(data.userData)
