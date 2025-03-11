@@ -20,9 +20,10 @@ const AdminContextProvider = (props) => {
 
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/admin/all-doctors', {  headers: {
-        'atoken': aToken,  // Use the correct header key 'atoken' (case-sensitive)
-    }})
+            const { data } = await axios.get(backendUrl + '/api/admin/all-doctors', { headers: {
+        Authorization: `Bearer ${aToken}`  // Add the token as a Bearer token
+    }
+});
             if (data.success) {
                 setDoctors(data.doctors)
             } else {
