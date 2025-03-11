@@ -16,7 +16,7 @@ connectCloudinary()
 // middlewares
 app.use(express.json())
 const corsOptions = {
-    origin: 'http://localhost:5173', // Update to your frontend URL
+    origin: 'https://nirogfrontend.vercel.app' // Update to your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
