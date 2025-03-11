@@ -40,10 +40,10 @@ const AppContextProvider = (props) => {
 
             console.log("--------------",token)
 
-            // const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: {
-            //     Authorization: `Bearer ${token}`
-            // } })
- const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
+            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: {
+                Authorization: `Bearer ${token}`
+            } })
+// const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
             if (data.success) {
                 console.log("----------",data.userData);
                 setUserData(data.userData)
