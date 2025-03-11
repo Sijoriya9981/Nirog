@@ -27,7 +27,9 @@ const MyProfile = () => {
 
             image && formData.append('image', image)
 
-            const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, { headers: { token } })
+            const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, {    headers: {
+                Authorization: `Bearer ${token}`  // Correct format for token in Authorization header
+            } })
 
             if (data.success) {
                 toast.success(data.message)
