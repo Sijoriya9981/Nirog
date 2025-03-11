@@ -17,11 +17,10 @@ const DoctorContextProvider = (props) => {
     const getAppointments = async () => {
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/doctor/appointments', headers: {
+            const { data } = await axios.get(backendUrl + '/api/doctor/appointments',{ headers: {
         Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
     }
 });
-
             if (data.success) {
                 setAppointments(data.appointments.reverse())
             } else {
@@ -38,7 +37,7 @@ const DoctorContextProvider = (props) => {
     const getProfileData = async () => {
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/doctor/profile', headers: {
+            const { data } = await axios.get(backendUrl + '/api/doctor/profile',{ headers: {
         Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
     }
 });
@@ -56,11 +55,10 @@ const DoctorContextProvider = (props) => {
 
         try {
 
-            const { data } = await axios.post(backendUrl + '/api/doctor/cancel-appointment', { appointmentId }, headers: {
+            const { data } = await axios.post(backendUrl + '/api/doctor/cancel-appointment', { appointmentId }, { headers: {
         Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
     }
 });
-
             if (data.success) {
                 toast.success(data.message)
                 getAppointments()
@@ -82,11 +80,10 @@ const DoctorContextProvider = (props) => {
 
         try {
 
-            const { data } = await axios.post(backendUrl + '/api/doctor/complete-appointment', { appointmentId }, headers: {
+            const { data } = await axios.post(backendUrl + '/api/doctor/complete-appointment', { appointmentId }, { headers: {
         Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
     }
 });
-
             if (data.success) {
                 toast.success(data.message)
                 getAppointments()
@@ -107,7 +104,7 @@ const DoctorContextProvider = (props) => {
     const getDashData = async () => {
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/doctor/dashboard', headers: {
+            const { data } = await axios.get(backendUrl + '/api/doctor/dashboard',{ headers: {
         Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
     }
 });
