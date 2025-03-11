@@ -45,6 +45,7 @@ const AppContextProvider = (props) => {
             } })
 
             if (data.success) {
+                console.log("----------",data.userData);
                 setUserData(data.userData)
             } else {
                  
