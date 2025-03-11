@@ -21,7 +21,10 @@ const DoctorProfile = () => {
                 available: profileData.available
             }
 
-            const { data } = await axios.post(backendUrl + '/api/doctor/update-profile', updateData, { headers: { dToken } })
+            const { data } = await axios.post(backendUrl + '/api/doctor/update-profile', updateData, headers: {
+        Authorization: `Bearer ${dToken}`  // Add the token as a Bearer token
+    }
+});
 
             if (data.success) {
                 toast.success(data.message)
