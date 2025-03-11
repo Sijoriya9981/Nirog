@@ -43,7 +43,7 @@ const AdminContextProvider = (props) => {
             const { data } = await axios.post(backendUrl + '/api/admin/change-availability', { docId }, { headers: {
         Authorization: `Bearer ${aToken}`  // Add the token as a Bearer token
     }
-})
+});
             if (data.success) {
                 toast.success(data.message)
                 getAllDoctors()
@@ -66,7 +66,7 @@ const AdminContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/api/admin/appointments', { headers: {
         Authorization: `Bearer ${aToken}`  // Add the token as a Bearer token
     }
-})
+});
             if (data.success) {
                 setAppointments(data.appointments.reverse())
             } else {
@@ -88,7 +88,7 @@ const AdminContextProvider = (props) => {
             const { data } = await axios.post(backendUrl + '/api/admin/cancel-appointment', { appointmentId }, { headers: {
         Authorization: `Bearer ${aToken}`  // Add the token as a Bearer token
     }
-})
+});
 
             if (data.success) {
                 toast.success(data.message)
@@ -111,7 +111,7 @@ const AdminContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/api/admin/dashboard', { headers: {
         Authorization: `Bearer ${aToken}`  // Add the token as a Bearer token
     }
-})
+});
 
             if (data.success) {
                 setDashData(data.dashData)
