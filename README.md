@@ -158,7 +158,9 @@ prescripto/
 ```
 
 ## 🤝 For admin 
+email = admin@gmail.com
+password = qwerty123
 
-
-
+for payement use test card
+4000003560000008
 
