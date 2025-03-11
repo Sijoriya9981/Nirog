@@ -38,7 +38,7 @@ const AppContextProvider = (props) => {
 
         try {
 
-            console.log("--------------",token')
+            console.log("--------------",token)
 
             const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
 
