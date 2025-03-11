@@ -18,7 +18,8 @@ app.use(express.json())
 const corsOptions = {
     origin: ['https://nirogfrontend.vercel.app'], // Update to your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true
 };
 
 app.use(cors(corsOptions));
