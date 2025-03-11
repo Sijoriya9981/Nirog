@@ -22,6 +22,7 @@ const AppContextProvider = (props) => {
             if (data.success) {
                 setDoctors(data.doctors)
             } else {
+                console.log("--",error);
                 toast.error(data.message)
             }
 
@@ -44,6 +45,7 @@ const AppContextProvider = (props) => {
             if (data.success) {
                 setUserData(data.userData)
             } else {
+                 console.log("--",error);
                 toast.error(data.message)
             }
 
